@@ -4,6 +4,7 @@
   "description": "node.js + react를 이용한 웹페이지 개발",
   "main": "index.js",
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
