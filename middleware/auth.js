@@ -3,6 +3,7 @@ const { User } = require('../models/User');
 
 let auth = (req, res, next) => {
     // 1. 클라이언트 쿠키에서 토큰을 가져온다.
+    
     let token = req.cookies.user_auth;
 
     // 2. 쿠키에서 가져온 토큰을 복호화한다.

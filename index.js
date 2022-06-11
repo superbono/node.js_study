@@ -52,6 +52,7 @@ app.post('/api/users/login', (req, res) => {
                     message: "실패! 해당하는 이메일이 없습니다."
                 })
             } 
+
         // 2. 데이터베이스에 요청한 아이디(email)이 있다면 비밀번호가 같은지 확인
         user.comparedPassword(req.body.password, (err, isMatch) => {
             if(!isMatch) return res.json({
@@ -65,7 +66,7 @@ app.post('/api/users/login', (req, res) => {
                 
                 // 토큰을 저장한다. ex) localStorage, cookie, session 등...
                 // 쿠키에 저장시 cookie-parser 라이브러리 설치 
-                res.cookie("user_auth", user.cookie)
+                res.cookie("user_auth", user.token)
                     .status(200)
                     .json({
                         loginSuccess: true,
@@ -98,6 +99,22 @@ app.get('/api/users/auth', auth ,(req, res) => {
         role: req.user.role,
         image: req.user.image
     });
+})
+
+app.get('/api/users/logout', auth, (req, res) => {
+    User.findOneAndUpdate(
+        {_id: req.user._id},
+        {token: ""},
+        (err, user) => {
+            if(err) return res.json({
+                success: false,
+                err: true,
+            })
+            return res.status(200).send({
+                success: true,
+            })
+        }
+    )
 })
 
 app.listen(port, () => {
