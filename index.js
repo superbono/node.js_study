@@ -18,7 +18,7 @@ mongoose.connect('mongodb+srv://choi:1234aa@testpjt.lqy406d.mongodb.net/?retryWr
     err => console.log(err))
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('Hello World!fffffss')
 })
 
 app.post('/register',(req, res) => {
@@ -30,6 +30,7 @@ app.post('/register',(req, res) => {
         if(err) {
             return res.json({ success: false, err});
         }
+
         return res.status(200).json({
             success: true
         })
