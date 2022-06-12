@@ -2,7 +2,6 @@ const express = require('express');
 const app = express()
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const port = 4000
 const config = require('./config/key');
 const { auth } = require('./middleware/auth');
 
@@ -25,7 +24,7 @@ app.get('/', (req, res) => {
   res.send('Hello World!fffffss11')
 })
 
-app.get('/hello', (req, res) => {
+app.get('/api/hello', (req, res) => {
   res.send('hello');
 })
 
@@ -120,6 +119,8 @@ app.get('/api/users/logout', auth, (req, res) => {
         }
     )
 })
+
+const port = 5000
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
