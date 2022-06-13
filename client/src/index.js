@@ -9,6 +9,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxTunk from 'redux-thunk';
+import Reducer from './_reducers';
 
 
 // dispatch를 해당하는 action을 보낼때 기존에는 객체형식으로 보낼 수 있다.
@@ -22,7 +23,10 @@ const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,ReduxTunk)(c
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider
-    store={createStoreWithMiddleware()}
+    store={createStoreWithMiddleware(Reducer,
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+      window.__REDUX_DEVTOOLS_EXTENSION__()
+    )}
   >
     <App />
   </Provider>
