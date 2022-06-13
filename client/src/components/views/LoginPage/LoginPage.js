@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux"
-
+import { loginUser } from "../../../_actions/user_action";
 
 const LoginPage = () => {
     
@@ -23,7 +23,7 @@ const LoginPage = () => {
             Password: Password
         }
 
-        // dispatch(loginUser(body))
+        dispatch(loginUser(body));
     }
 
     const onResetValue = () => {
