@@ -13,7 +13,7 @@ const LandingPage = () => {
     },[]);
 
     return (
-        <div>
+        <div className="LandingPageBox">
             LandingPage
         </div>
     )
