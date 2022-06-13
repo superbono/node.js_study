@@ -1,7 +1,7 @@
 
 
-// const userReducer = () => {
+const userReducer = () => {
 
-// }
+}
 
-// export default userReducer;
+export default userReducer;
