@@ -37,6 +37,53 @@ code {
   align-items: center;
 }
 
+.RegisterAgreeBox {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.RegisterAgreeBox textarea {
+  width: 50%;
+  height: 300px;
+  resize: none;
+}
+
+.RegisterAgreeBox .HomeBtn {
+  height: 40px;
+  width: 50%;
+  margin-bottom: 5px;
+  border: none;
+  background: #D1D5D8;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.RegisterAgreeBox .NextBtn {
+  height: 40px;
+  width: 50%;
+  margin-bottom: 5px;
+  border: none;
+  background: #53DF83;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.RegisterAgreeBox .RadioContainer {
+  display: flex;
+  margin-left: 700px;
+  margin-bottom: 20px;
+}
+
+.RegisterAgreeBox .RadioContainer div {
+  margin-right: 20px;
+}
+
 .LoginForm {
   display: flex;
   flex-direction: column;

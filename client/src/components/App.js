@@ -7,6 +7,7 @@ import {
 import LandingPage from './views/LandingPage/LandingPage';
 import RegisterPage from './views/RegisterPage/RegisterPage';
 import LoginPage from "./views/LoginPage/LoginPage";
+import RegisterAgree from "./views/RegisterPage/RegisterAgree";
 
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
         */}
         <Routes>
           <Route exact path="/" element={<LandingPage />} />
+          <Route exact path="/regist-agree" element={<RegisterAgree />} />
           <Route exact path="/regist" element={<RegisterPage />} />
           <Route exact path="/login" element={<LoginPage />} />
         </Routes>
