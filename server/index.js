@@ -49,6 +49,7 @@ app.post('/api/users/login', (req, res) => {
         // 로그인 할 때 필요한 로직 
         // 1. 데이터베이스에 요청한 아이디(email) 찾기
          User.findOne({ email: req.body.email }, (err, user) => {
+            console.log("유저", user);
             if(!user) {
                 return res.json({
                     loginSuccess: false,
@@ -57,11 +58,9 @@ app.post('/api/users/login', (req, res) => {
             } 
 
         // 2. 데이터베이스에 요청한 아이디(email)이 있다면 비밀번호가 같은지 확인
-        user.comparedPassword(req.body.password, (err, isMatch) => {
-            if(!isMatch) return res.json({
-                loginSuccess: false,
-                message: "비밀번호가 일치하지 않습니다."
-            })
+        user.comparePassword(req.body.password, (err, isMatch) => {
+            if (!isMatch) 
+                return res.json({ loginSuccess: false, message: "비밀번호가 틀렸습니다." })
 
             // 3. 비밀번호가 같다면 Token을 생성
             user.generateToken((err, user) => {

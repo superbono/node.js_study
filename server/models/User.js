@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const saltRounds = 10;
+const saltRounds = 10
 const jwt = require('jsonwebtoken');
 
 const userSchema = mongoose.Schema({
@@ -15,7 +15,11 @@ const userSchema = mongoose.Schema({
     },
     password: {
         type: String,
-        maxlength: 150
+        minlength: 5
+    },
+    lastname: {
+        type: String,
+        maxlength: 50
     },
     role: {
         type: Number,
@@ -30,35 +34,33 @@ const userSchema = mongoose.Schema({
     }
 });
 
-userSchema.pre('save', function(next){
+userSchema.pre('save', function (next) {
+    var user = this;
+    if (user.isModified('password')) {
+        //비밀번호를 암호화 시킨다.
+        bcrypt.genSalt(saltRounds, function (err, salt) {
+            if (err) return next(err)
 
-    let user = this;
-    if(user.isModified('password')) {
-        // 비밀번호를 암호화 시킨다.
-        bcrypt.genSalt(saltRounds, function(err, salt) {
-            if(err) return next(err);
-            bcrypt.hash(user.password, salt, function(err, hash) {
-                if(err) return next(err);
-                user.password = hash;
-                next();
-            });
-        });
+            bcrypt.hash(user.password, salt, function (err, hash) {
+                if (err) return next(err)
+                user.password = hash
+                next()
+            })
+        })
     } else {
-        next();
+        next()
     }
+})
 
-});
 
+userSchema.methods.comparePassword = function(plainPassword, cb) {
 
-userSchema.methods.comparedPassword = function(plainPassword, cb) {
-
-    let user = this;
     // plainPassword: 클라이언트 화면에서 입력한 패스워드
     // cb: callback 함수
-    bcrypt.compare(plainPassword, user.password, function(err, isMatch) {
-        if(err) return cb(err);
-        cb(null, isMatch)
-    });
+    bcrypt.compare(plainPassword, this.password, function (err, isMatch) {
+        if (err) return cb(err);
+        cb(null, isMatch);
+    })
 }
 
 userSchema.methods.generateToken = function(cb) {

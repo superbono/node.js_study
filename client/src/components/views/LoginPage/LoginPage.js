@@ -20,7 +20,7 @@ const LoginPage = () => {
         e.preventDefault();
         let body = {
             email: Email,
-            Password: Password
+            password: Password
         }
 
         dispatch(loginUser(body));
