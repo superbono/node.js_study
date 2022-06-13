@@ -11,9 +11,9 @@ import LoginPage from "./views/LoginPage/LoginPage";
 
 function App() {
   return (
-<Router>
+    <Router>
       <div>
-        <ul>
+        {/* <ul>
           <li>
             <Link to="/">Home</Link>
           </li>
@@ -25,7 +25,7 @@ function App() {
           </li>
         </ul>
 
-        <hr />
+        <hr /> */}
 
         {/*
           A <Switch> looks through all its children <Route>

@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux"
+import { registerUser } from "../../../_actions/user_action";
+import { useNavigate } from "react-router-dom";
 
+const RegisterPage = () => {
 
-const RegisterPage = (props) => {
-
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [Name, setName] = useState("");
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
@@ -27,15 +30,32 @@ const RegisterPage = (props) => {
 
     const onSubmit = (e) => {
         e.preventDefault();
+
+        if (Password !== ConfirmPassword) {
+            return alert('비밀번호를 확인해주세요.')
+        }
+
         let body = {
+            name: Name,
             email: Email,
             password: Password
         }
+        dispatch(registerUser(body))
+            .then(response => {
+                if (response.payload.success) {
+                    alert('회원가입이 완료되었습니다.');
+                    navigate("/login")
+                } else {
+                    alert('확인 후 다시 가입해주세요.');
+                }
+            })
 
     }
     const onResetValue = () => {
+        setName("");
         setEmail("");
         setPassword("");
+        setConfirmPassword("");
     }
     return (
 

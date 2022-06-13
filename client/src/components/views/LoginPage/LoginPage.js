@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux"
 import { loginUser } from "../../../_actions/user_action";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = (props) => {
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
 
@@ -23,7 +25,16 @@ const LoginPage = (props) => {
             password: Password
         }
 
-        dispatch(loginUser(body));
+        dispatch(loginUser(body))
+            .then(response => {
+                if (response.payload.loginSuccess) {
+                    alert('로그인 되었습니다.');
+                    navigate('/');
+                } else {
+                    alert('회원가입 후 이용해주세요.');
+                    navigate('/regist');
+                }
+            })
     }
 
     const onResetValue = () => {
