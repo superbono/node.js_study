@@ -14,7 +14,7 @@ const LandingPage = () => {
 
     return (
         <div className="LandingPageBox">
-            LandingPage
+            <h1>LandingPage</h1>
         </div>
     )
 }

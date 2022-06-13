@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux"
+
 
 const LoginPage = () => {
     
+    const dispatch = useDispatch();
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
     
@@ -15,7 +18,12 @@ const LoginPage = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        console.log(Email, Password);
+        let body = {
+            email: Email,
+            Password: Password
+        }
+
+        // dispatch(loginUser(body))
     }
 
     const onResetValue = () => {
