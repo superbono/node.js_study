@@ -9,7 +9,7 @@ import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import promiseMiddleware from 'redux-promise';
 import ReduxTunk from 'redux-thunk';
-import Reducer from './_reducers';
+
 
 // dispatch를 해당하는 action을 보낼때 기존에는 객체형식으로 보낼 수 있다.
 // 개발을 진행할 시에, 함수형식과 promise형식으로도 보내게 될 경우가 있는데,
@@ -22,11 +22,7 @@ const createStoreWithMiddleware = applyMiddleware(promiseMiddleware,ReduxTunk)(c
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider
-    store={createStoreWithMiddleware(Reducer,
-       // chrome redux extension을 사용하기 위한 설정
-        window.__REDUX_DEVTOOLS_EXTENSION__ &&
-        window.__REDUX_DEVTOOLS_EXTENSION__()
-    )}
+    store={createStoreWithMiddleware()}
   >
     <App />
   </Provider>
