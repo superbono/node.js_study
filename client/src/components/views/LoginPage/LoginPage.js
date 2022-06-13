@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux"
 import { loginUser } from "../../../_actions/user_action";
 import { useNavigate } from "react-router-dom";
 
-const LoginPage = (props) => {
+const LoginPage = () => {
 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -31,7 +31,7 @@ const LoginPage = (props) => {
                     alert('로그인 되었습니다.');
                     navigate('/');
                 } else {
-                    alert('회원가입 후 이용해주세요.');
+                    alert('회원정보를 확인 후 이용해주세요.');
                     navigate('/regist');
                 }
             })
