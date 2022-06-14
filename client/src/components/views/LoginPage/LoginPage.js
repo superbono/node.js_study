@@ -45,7 +45,7 @@ const LoginPage = () => {
     return (
         <div className="LoginPageBox">
             <form className="LoginForm" onSubmit={onSubmit}>
-                <label className="EmailLabel">Email</label>
+                <label className="EmailLabel">이메일</label>
                 <input
                     className="EmailInput"
                     type="email"
@@ -53,7 +53,7 @@ const LoginPage = () => {
                     onChange={handleEmailChange}
                     placeholder="이메일을 입력하세요."
                 />
-                <label className="PasswordLabel">Password</label>
+                <label className="PasswordLabel">비밀번호</label>
                 <input
                     className="PasswordInput"
                     type="password"

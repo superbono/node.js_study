@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useDispatch } from "react-redux"
 import { registerUser } from "../../../_actions/user_action";
 import { useNavigate } from "react-router-dom";
 
+
 const RegisterPage = () => {
 
+    const inputNameRef = useRef();
+    const inputEmailRef = useRef();
+    const inputPwRef = useRef();
+    const inputConfirmPwRef = useRef();
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [Name, setName] = useState("");
@@ -31,8 +36,18 @@ const RegisterPage = () => {
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if (Password !== ConfirmPassword) {
-            return alert('비밀번호를 확인해주세요.')
+        if (Name === '') {
+            alert('이름을 입력해주세요.');
+            return inputNameRef.current.focus();
+        } else if (Email === '') {
+            alert('이메일을 입력해주세요.');
+            return inputEmailRef.current.focus();
+        } else if (Password === '') {
+            alert('비밀번호를 입력해주세요.');
+            return inputPwRef.current.focus();
+        } else if (Password !== ConfirmPassword) {
+            alert('비밀번호를 확인해주세요.');
+            return inputConfirmPwRef.current.focus();
         }
 
         let body = {
@@ -45,8 +60,6 @@ const RegisterPage = () => {
                 if (response.payload.success) {
                     alert('회원가입이 완료되었습니다.');
                     navigate("/login")
-                } else {
-                    alert('확인 후 다시 가입해주세요.');
                 }
             })
 
@@ -61,37 +74,41 @@ const RegisterPage = () => {
 
         <div className="LoginPageBox">
             <form className="LoginForm" onSubmit={onSubmit}>
-                <label className="EmailLabel">Name</label>
+                <label className="EmailLabel">이름</label>
                 <input
                     className="EmailInput"
                     type="text"
                     value={Name}
                     onChange={handleNameChange}
                     placeholder="이름을 입력하세요."
+                    ref={inputNameRef}
                 />
-                <label className="EmailLabel">Email</label>
+                <label className="EmailLabel">이메일</label>
                 <input
                     className="EmailInput"
                     type="email"
                     value={Email}
                     onChange={handleEmailChange}
                     placeholder="이메일을 입력하세요."
+                    ref={inputEmailRef}
                 />
-                <label className="PasswordLabel">Password</label>
+                <label className="PasswordLabel">비밀번호</label>
                 <input
                     className="PasswordInput"
                     type="password"
                     value={Password}
                     onChange={handlePasswordChange}
                     placeholder="비밀번호를 입력하세요."
+                    ref={inputPwRef}
                 />
-                <label className="PasswordLabel">Confirm Password</label>
+                <label className="PasswordLabel">비밀번호 확인</label>
                 <input
                     className="PasswordInput"
                     type="password"
                     value={ConfirmPassword}
                     onChange={handleConfirmPasswordChange}
                     placeholder="비밀번호를 입력하세요."
+                    ref={inputConfirmPwRef}
                 />
                 <div className="BtnContainer">
                     <button className="LoginBtn">회원가입</button>
