@@ -23,7 +23,7 @@ const LandingPage = () => {
                 // if (document.cookie.match('user_auth')) {
                 //     alert('존재');
                 // }
-                // document.cookie = 'user_auth' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                document.cookie = 'user_auth' + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
                 alert('로그아웃 되었습니다.');
                 navigate('/login');
             })
