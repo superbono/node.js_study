@@ -9,7 +9,6 @@ import RegisterPage from './views/RegisterPage/RegisterPage';
 import LoginPage from "./views/LoginPage/LoginPage";
 import RegisterAgree from "./views/RegisterPage/RegisterAgree";
 
-
 function App() {
   return (
     <Router>

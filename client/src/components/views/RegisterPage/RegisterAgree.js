@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
 import { Radio } from "antd";
+import Auth from "../../../hoc/auth";
 
 const RegisterAgree = () => {
 
@@ -46,4 +47,4 @@ const RegisterAgree = () => {
     )
 }
 
-export default RegisterAgree;
+export default Auth(RegisterAgree, false);
