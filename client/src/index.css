@@ -39,7 +39,7 @@ code {
 
 .RegisterAgreeBox {
   display: flex;
-  width: 100%;
+  width: 850px;
   height: 100vh;
   justify-content: center;
   align-items: center;
@@ -47,25 +47,27 @@ code {
 }
 
 .RegisterAgreeBox textarea {
-  width: 50%;
-  height: 300px;
+  width: 500px;
+  height: 200px;
   resize: none;
+  padding: 5px;
 }
 
 .RegisterAgreeBox .HomeBtn {
   height: 40px;
-  width: 50%;
+  width: 100%;
   margin-bottom: 5px;
   border: none;
   background: #D1D5D8;
   color: #fff;
   border-radius: 5px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .RegisterAgreeBox .NextBtn {
   height: 40px;
-  width: 50%;
+  width: 100%;
   margin-bottom: 5px;
   border: none;
   background: #53DF83;
@@ -155,4 +157,21 @@ code {
 
 .LogoutBtn:hover {
   color: darkgray;
+}
+
+.ant-radio-checked .ant-radio-inner {
+  border: 1px solid #53DF83 !important;
+}
+
+.ant-radio-inner:after {
+  background: #53DF83 !important;
+}
+
+.RegisterAgreeBox .RadioContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.RegisterAgreeBox .RadioContainer .RadioBox {
+  margin-left: 327px;
 }

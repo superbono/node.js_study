@@ -43,7 +43,9 @@ const LoginPage = () => {
                     navigate('/');
                 } else {
                     alert('회원정보를 확인 후 이용해주세요.');
-                    navigate('/regist');
+                    setEmail("");
+                    setPassword("");
+                    // navigate('/regist');
                 }
             })
     }
