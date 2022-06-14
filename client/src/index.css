@@ -111,6 +111,12 @@ code {
   font-weight: 500;
 }
 
+.LoginForm .ConfirmPasswordLabel {
+  margin: 5px 0;
+  font-size: 15px;
+  font-weight: 500;
+}
+
 .LoginForm .EmailInput {
   margin-bottom: 5px;
 }

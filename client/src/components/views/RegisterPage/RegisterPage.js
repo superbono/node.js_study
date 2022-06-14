@@ -45,6 +45,9 @@ const RegisterPage = () => {
         } else if (Password === '') {
             alert('비밀번호를 입력해주세요.');
             return inputPwRef.current.focus();
+        } else if (ConfirmPassword === '') {
+            alert('비밀번호를 입력해주세요.');
+            return inputConfirmPwRef.current.focus();
         } else if (Password !== ConfirmPassword) {
             alert('비밀번호를 확인해주세요.');
             return inputConfirmPwRef.current.focus();
@@ -101,7 +104,7 @@ const RegisterPage = () => {
                     placeholder="비밀번호를 입력하세요."
                     ref={inputPwRef}
                 />
-                <label className="PasswordLabel">비밀번호 확인</label>
+                <label className="ConfirmPasswordLabel">비밀번호 확인</label>
                 <input
                     className="PasswordInput"
                     type="password"
