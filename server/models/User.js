@@ -21,7 +21,13 @@ const userSchema = mongoose.Schema({
         type: String,
         maxlength: 50
     },
-    agreeYN: {
+    // 약관동의
+    clusCOSMTYN: {
+        type: String,
+        default: "N"
+    },
+    // 사용요금동의
+    useFareCosmtYN: {
         type: String,
         default: "N"
     },

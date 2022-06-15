@@ -31,14 +31,13 @@ const RegisterAgree = () => {
                 <textarea>
                     sdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsa
                 </textarea><br />
-                {/* <div>
-                    <input type="radio" checked />
-                    <label>동의</label>
-                </div>
-                <div>
-                    <input type="radio" />
-                    <label>동의안함</label>
-                </div> */}
+                <Radio.Group onChange={onChange} value={value} className="RadioBox" style={{ marginBottom: 15 }}>
+                    <Radio value={1}>동의</Radio>
+                    <Radio value={2}>동의안함</Radio>
+                </Radio.Group>
+                <textarea>
+                    sdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsa
+                </textarea><br />
                 <Radio.Group onChange={onChange} value={value} className="RadioBox">
                     <Radio value={1}>동의</Radio>
                     <Radio value={2}>동의안함</Radio>
