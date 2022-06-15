@@ -1,12 +1,15 @@
 import React, { useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux"
 import { Radio } from "antd";
 import Auth from "../../../hoc/auth";
+import axios from 'axios';
 
 const RegisterAgree = () => {
 
     const navigate = useNavigate();
     const [value, setValue] = useState(2);
+    const dispatch = useDispatch();
 
     const onChange = (e) => {
         console.log("radio checked", e.target.value);
@@ -17,8 +20,8 @@ const RegisterAgree = () => {
             alert('동의 후 진행해주세요.');
         } else {
             navigate("/regist");
+            // axios.post('/api/users/registAgree',body)
         }
-
     }
 
     return (

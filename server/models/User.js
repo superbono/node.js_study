@@ -21,6 +21,10 @@ const userSchema = mongoose.Schema({
         type: String,
         maxlength: 50
     },
+    agreeYN: {
+        type: String,
+        default: "N"
+    },
     role: {
         type: Number,
         default: 0
@@ -53,7 +57,7 @@ userSchema.pre('save', function (next) {
 })
 
 
-userSchema.methods.comparePassword = function(plainPassword, cb) {
+userSchema.methods.comparePassword = function (plainPassword, cb) {
 
     // plainPassword: 클라이언트 화면에서 입력한 패스워드
     // cb: callback 함수
@@ -63,28 +67,28 @@ userSchema.methods.comparePassword = function(plainPassword, cb) {
     })
 }
 
-userSchema.methods.generateToken = function(cb) {
+userSchema.methods.generateToken = function (cb) {
     let user = this;
     // jsonwebtoken 라이브러리 설치
     let token = jwt.sign(user._id.toHexString(), 'secretToken');
     user.token = token
     // console.log("토큰" + user.token);
-    user.save(function(err, user){
-        if(err) return cb(err);
+    user.save(function (err, user) {
+        if (err) return cb(err);
         cb(null, user);
     })
 }
 
-userSchema.statics.findByToken = function(token, cb) {
+userSchema.statics.findByToken = function (token, cb) {
     let user = this;
-    
+
     // 토큰을 복호화한다.
-    jwt.verify(token, 'secretToken', function(err, decoded) {
+    jwt.verify(token, 'secretToken', function (err, decoded) {
         // 유저 아이디를 이용해서 유저를 찾는다.
         // 클라이언트에서 가져온 token과 db에 있는 token이 일치하는지 확인한다.
 
-        user.findOne({ "_id": decoded, "token": token }, function(err,user) {
-            if(err) return cb(err);
+        user.findOne({ "_id": decoded, "token": token }, function (err, user) {
+            if (err) return cb(err);
             cb(null, user);
         });
 
@@ -94,4 +98,4 @@ userSchema.statics.findByToken = function(token, cb) {
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = {User}
+module.exports = { User }
