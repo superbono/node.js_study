@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux"
 import { Radio } from "antd";
 import Auth from "../../../hoc/auth";
+import { registerAgree } from "../../../_actions/user_action";
 import axios from 'axios';
 
 const RegisterAgree = () => {
@@ -16,14 +17,37 @@ const RegisterAgree = () => {
         console.log("radio checked", e.target.value);
         setCosmt(e.target.value);
     };
+
+    const onFareChange = (e) => {
+        console.log("radio checked", e.target.value);
+        setFare(e.target.value);
+    };
+
     const handleNext = () => {
         if (Cosmt === 2) {
             alert('약관동의 후 진행해주세요.');
         } else if (Fare === 2) {
             alert('사용요금동의 후 진행해주세요.');
-        } else {
+        } else if (Cosmt === 1 && Fare === 1) {
             navigate("/regist");
-            // axios.post('/api/users/registAgree',body)
+
+            let body = {
+                clusCOSMTYN: Cosmt,
+                useFareCosmtYN: Fare,
+            }
+
+            dispatch(registerAgree(body))
+                .then(response => {
+
+                })
+
+            // dispatch(registerUser(body))
+            // .then(response => {
+            //     if (response.payload.success) {
+            //         alert('회원가입이 완료되었습니다.');
+            //         navigate("/login")
+            //     }
+            // })
         }
     }
 
@@ -42,11 +66,11 @@ const RegisterAgree = () => {
                 <textarea>
                     sdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsa
                 </textarea><br />
-                <Radio.Group onChange={setFare} value={Fare} className="RadioBox" style={{ marginBottom: 20 }}>
+                <Radio.Group onChange={onFareChange} value={Fare} className="RadioBox" style={{ marginBottom: 20 }}>
                     <Radio value={1}>동의</Radio>
                     <Radio value={2}>동의안함</Radio>
                 </Radio.Group>
-                <button className="HomeBtn">홈</button>
+                {/* <button className="HomeBtn">홈</button> */}
                 <button className="NextBtn" onClick={handleNext}>다음</button>
             </div>
         </div>

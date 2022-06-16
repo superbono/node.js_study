@@ -2,6 +2,7 @@ import axios from 'axios';
 import {
     LOGIN_USER,
     REGISTER_USER,
+    REGISTER_AGREE,
     AUTH_USER
 } from './types'
 
@@ -20,6 +21,15 @@ export const registerUser = (dataToSubmit) => {
         .then(response => response.data);
     return {
         type: REGISTER_USER,
+        payload: request
+    }
+}
+
+export const registerAgree = (dataToSubmit) => {
+    const request = axios.post("/api/users/registAgree", dataToSubmit)
+        .then(response => response.data);
+    return {
+        type: REGISTER_AGREE,
         payload: request
     }
 }

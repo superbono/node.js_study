@@ -55,6 +55,7 @@ app.post('/api/users/login', (req, res) => {
     // 로그인 할 때 필요한 로직 
     // 1. 데이터베이스에 요청한 아이디(email) 찾기
     User.findOne({ email: req.body.email }, (err, user) => {
+        // '/api/users/login' -> user Console
         console.log("유저", user);
         if (!user) {
             return res.json({
