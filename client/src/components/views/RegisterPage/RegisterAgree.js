@@ -8,16 +8,19 @@ import axios from 'axios';
 const RegisterAgree = () => {
 
     const navigate = useNavigate();
-    const [value, setValue] = useState(2);
+    const [Cosmt, setCosmt] = useState(2);
+    const [Fare, setFare] = useState(2);
     const dispatch = useDispatch();
 
-    const onChange = (e) => {
+    const onCosmtChange = (e) => {
         console.log("radio checked", e.target.value);
-        setValue(e.target.value);
+        setCosmt(e.target.value);
     };
     const handleNext = () => {
-        if (value === 2) {
-            alert('동의 후 진행해주세요.');
+        if (Cosmt === 2) {
+            alert('약관동의 후 진행해주세요.');
+        } else if (Fare === 2) {
+            alert('사용요금동의 후 진행해주세요.');
         } else {
             navigate("/regist");
             // axios.post('/api/users/registAgree',body)
@@ -27,18 +30,19 @@ const RegisterAgree = () => {
     return (
         <div className="RegisterAgreeBox" >
             <div className="RadioContainer">
-                <h2>회원약관</h2>
+                <h3>약관동의</h3>
                 <textarea>
                     sdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsa
                 </textarea><br />
-                <Radio.Group onChange={onChange} value={value} className="RadioBox" style={{ marginBottom: 15 }}>
+                <Radio.Group onChange={onCosmtChange} value={Cosmt} className="RadioBox" style={{ marginBottom: 5 }}>
                     <Radio value={1}>동의</Radio>
                     <Radio value={2}>동의안함</Radio>
                 </Radio.Group>
+                <h3>사용요금동의</h3>
                 <textarea>
                     sdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsasdaffsdfsdafsasdfsa
                 </textarea><br />
-                <Radio.Group onChange={onChange} value={value} className="RadioBox">
+                <Radio.Group onChange={setFare} value={Fare} className="RadioBox" style={{ marginBottom: 20 }}>
                     <Radio value={1}>동의</Radio>
                     <Radio value={2}>동의안함</Radio>
                 </Radio.Group>
