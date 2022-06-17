@@ -51,7 +51,8 @@ app.post('/api/users/registAgree', (req, res) => {
     const fare = req.body.useFareCosmtYN;
     console.log("약관동의: " + cosmt);
     console.log("약관동의: " + fare);
-    if (cosmt === "N" && fare === "N") {
+    if (cosmt === "N" || fare === "N") {
+        console.log("약관동의 실패: " + fare);
         return res.json({
             agreeSuccess: false,
             message: "약관동의 확인 후 진행해주세요."

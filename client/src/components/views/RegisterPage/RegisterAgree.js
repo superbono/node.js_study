@@ -29,6 +29,7 @@ const RegisterAgree = () => {
         } else if (Fare === 2) {
             alert('사용요금동의 후 진행해주세요.');
         } else if (Cosmt === 1 && Fare === 1) {
+            alert('회원가입페이지로 이동합니다.');
             navigate("/regist");
 
             let body = {
