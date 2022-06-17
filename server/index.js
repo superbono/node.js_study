@@ -47,7 +47,23 @@ app.post('/api/users/register', (req, res) => {
 
 app.post('/api/users/registAgree', (req, res) => {
     const user = new User(req.body);
-    console.log(user);
+    const cosmt = req.body.clusCOSMTYN;
+    const fare = req.body.useFareCosmtYN;
+    console.log("약관동의: " + cosmt);
+    console.log("약관동의: " + fare);
+    if (cosmt === "N" && fare === "N") {
+        return res.json({
+            agreeSuccess: false,
+            message: "약관동의 확인 후 진행해주세요."
+        })
+    } else {
+        console.log("약관동의 진입 후: " + cosmt);
+        console.log("약관동의 진입 후: " + fare);
+        return res.json({
+            agreeSuccess: true,
+            message: "약관동의 성공! 다음 step을 진행해주세요."
+        })
+    }
 })
 
 
