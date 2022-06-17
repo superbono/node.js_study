@@ -52,9 +52,10 @@ const LoginPage = () => {
             })
     }
 
-    const onResetValue = () => {
+    const onMoveRegist = () => {
         setEmail("");
         setPassword("");
+        navigate("/regist-agree")
     }
 
     return (
@@ -80,7 +81,7 @@ const LoginPage = () => {
                 />
                 <div className="BtnContainer">
                     <button className="LoginBtn">로그인</button>
-                    <button className="ResetBtn" onClick={onResetValue}>취소</button>
+                    <button className="ResetBtn" onClick={onMoveRegist}>회원가입</button>
                 </div>
             </form>
         </div>
