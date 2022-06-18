@@ -72,6 +72,7 @@ const RegisterPage = () => {
         // setEmail("");
         // setPassword("");
         // setConfirmPassword("");
+        // 리셋버튼 대신에 로그인페이지로 이동
         navigate("/login");
     }
     return (
