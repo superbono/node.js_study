@@ -45,6 +45,7 @@ const LoginPage = () => {
                     navigate('/');
                 } else {
                     alert('회원정보를 확인 후 이용해주세요.');
+                    // 추후 아이디, 비밀번호 경고메시지 따로 조건
                     setEmail("");
                     setPassword("");
                     // navigate('/regist');
