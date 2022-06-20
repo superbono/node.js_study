@@ -56,7 +56,9 @@ const RegisterPage = () => {
         let body = {
             name: Name,
             email: Email,
-            password: Password
+            password: Password,
+            clusCOSMTYN: "Y",
+            useFareCosmtYN: "Y"
         }
         dispatch(registerUser(body))
             .then(response => {
