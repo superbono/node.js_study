@@ -105,6 +105,7 @@ code {
   color: #D6D6D6;
 }
 
+.LoginForm .NameLabel,
 .LoginForm .EmailLabel,
 .LoginForm .PasswordLabel
 {
@@ -119,8 +120,48 @@ code {
   font-weight: 500;
 }
 
+.LoginForm .EmailBox {
+  display: flex;
+  flex-direction: row;
+}
+
+.LoginForm .EmailBox input {
+  margin-right: 5px;
+  width: 70%;
+}
+
+.LoginForm .EmailBox button {
+  height: 28px;
+}
+
 .LoginForm .EmailInput {
-  margin-bottom: 5px;
+  margin-bottom: 5px !important;
+}
+
+.LoginForm .NameInput {
+  margin-bottom: 5px !important;
+  width: 100%;
+}
+
+.LoginForm .PasswordInput
+{
+  margin-bottom: 5px !important;
+  width: 100%;
+}
+
+.LoginForm .ConfirmPasswordInput {
+  margin-bottom: 5px !important;
+  width: 100%;
+}
+
+.LoginForm .IdChkBtn {
+  width: 60px;
+  height: 28px;
+  border: none;
+  font-size: 12px;
+  border-radius: 5px;
+  background: dodgerblue;
+  color: #fff;
 }
 
 .BtnContainer {

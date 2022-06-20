@@ -33,6 +33,10 @@ const RegisterPage = () => {
         setConfirmPassword(e.target.value);
     }
 
+    const handleIdChk = () => {
+        alert('중복체크');
+    }
+
     const onSubmit = (e) => {
         e.preventDefault();
 
@@ -46,13 +50,13 @@ const RegisterPage = () => {
             alert('비밀번호를 입력해주세요.');
             return inputPwRef.current.focus();
         } else if (ConfirmPassword === '') {
-            alert('비밀번호를 입력해주세요.');
-            return inputConfirmPwRef.current.focus();
+            alert('비밀번호를 입력해주세요.');;
         } else if (Password !== ConfirmPassword) {
             alert('비밀번호를 확인해주세요.');
             return inputConfirmPwRef.current.focus();
         }
 
+        return inputConfirmPwRef.current.focus()
         let body = {
             name: Name,
             email: Email,
@@ -81,9 +85,9 @@ const RegisterPage = () => {
 
         <div className="LoginPageBox">
             <form className="LoginForm" onSubmit={onSubmit}>
-                <label className="EmailLabel">이름</label>
+                <label className="NameLabel">이름</label>
                 <input
-                    className="EmailInput"
+                    className="NameInput"
                     type="text"
                     value={Name}
                     onChange={handleNameChange}
@@ -91,14 +95,17 @@ const RegisterPage = () => {
                     ref={inputNameRef}
                 />
                 <label className="EmailLabel">이메일</label>
-                <input
-                    className="EmailInput"
-                    type="email"
-                    value={Email}
-                    onChange={handleEmailChange}
-                    placeholder="이메일을 입력하세요."
-                    ref={inputEmailRef}
-                />
+                <div className="EmailBox">
+                    <input
+                        className="EmailInput"
+                        type="email"
+                        value={Email}
+                        onChange={handleEmailChange}
+                        placeholder="이메일을 입력하세요."
+                        ref={inputEmailRef}
+                    />
+                    <button className="IdChkBtn" type="button" onClick={handleIdChk}>중복확인</button>
+                </div>
                 <label className="PasswordLabel">비밀번호</label>
                 <input
                     className="PasswordInput"
@@ -110,7 +117,7 @@ const RegisterPage = () => {
                 />
                 <label className="ConfirmPasswordLabel">비밀번호 확인</label>
                 <input
-                    className="PasswordInput"
+                    className="ConfirmPasswordInput"
                     type="password"
                     value={ConfirmPassword}
                     onChange={handleConfirmPasswordChange}
