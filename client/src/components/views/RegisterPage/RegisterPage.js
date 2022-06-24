@@ -16,6 +16,8 @@ const RegisterPage = () => {
     const [Email, setEmail] = useState("");
     const [Password, setPassword] = useState("");
     const [ConfirmPassword, setConfirmPassword] = useState("");
+    // const [clusCOSMTYN, setClusCOSMTYN] = useState("N");
+    // const [useFareCosmtYN, setUseFareCosmtYN] = useState("N");
 
     const handleNameChange = (e) => {
         setName(e.target.value);
@@ -62,7 +64,7 @@ const RegisterPage = () => {
             email: Email,
             password: Password,
             clusCOSMTYN: "Y",
-            useFareCosmtYN: "Y"
+            useFareCosmtYN: "Y",
         }
         dispatch(registerUser(body))
             .then(response => {
